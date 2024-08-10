@@ -1,16 +1,15 @@
-# 대표값2 : 5개의 수 입력 => 평균값, 중앙값 출력
-arr = []
-avg = 0
-for _ in range(5):
-    A = int(input())
-    arr.append(A)
-    avg += A
-print(int(avg/5))
-# 순서가 없고 중복도 가능하네 => 오름차순 정리만 해주자!
-for i in range(5):
-    for j in range(i,5):
-        if arr[i] > arr[j]:
-            temp = arr[i]
-            arr[i] = arr[j]
-            arr[j] = temp
-print(arr[2])
+# 알고리즘 수업 - 점근적 표기 1 : f(n) = a1n + a0, 양의 정수 c, n0 입력 => 만족 = 1, 불만족 = 0 출력
+# O(n)의 정의 : 모든 n>=n0 에 대해 f(n)<=c*g(n)인 양의 상수 c와 n0가 존재
+a1, a0 = map(int,input().split())
+c = int(input())
+n0 = int(input())
+n = n0
+while True:
+    if a1 * n + a0 > c * n:
+        print(0)
+        break
+    elif n == 101:
+        print(1)
+        break
+    else:
+        n += 1
