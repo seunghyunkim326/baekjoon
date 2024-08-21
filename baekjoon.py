@@ -1,11 +1,9 @@
-# 커트라인 : N명 응시, 점수 가장 높은 k명 수상 => 수상 커트라인 점수 출력
-N, k = map(int,input().split())
-score = [int(x) for x in map(int,input().split())]
-# 내림차순 정렬 함수 or 알고리즘 사용
+# 수 정렬하기 2 : N 입력, N줄에 걸쳐 수 입력(중복X) => N개의 줄에 오름차순으로 정렬된 수 출력
+N = int(input())
+arr = []
+for _ in range(N):
+    temp = int(input())
+    arr.append(temp)
+arr.sort()
 for i in range(N):
-    for j in range(i+1,N):
-        if score[j] > score[i]:
-            temp = score[j]
-            score[j] = score[i]
-            score[i] = temp
-print(score[k-1])
+    print(arr[i])
