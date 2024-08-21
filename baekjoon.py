@@ -1,17 +1,23 @@
-# 문자열 집합 : N, M 입력, 집합 S에 포함된 N개의 문자열, 검사해야할 M개의 문자열 입력 => M개의 문자열 중 집합 S에 포함된 문자열 갯수 출력
-N, M = map(int,input().split())
-S = set()
-check = []
-count = 0
-for _ in range(N):
-    temp_S = str(input())
-    S.add(temp_S)
-for _ in range(M):
-    temp_check = str(input())
-    check.append(temp_check)
-for i in range(M):
-    if check[i] in S:
-        count += 1
-    else:
-        pass
-print(count)
+# 영화감독 숌 : 종말의 수는 어떤 수에 6이 적어도 3번 이상 연속으로 들어가는 수. 666, 1666, 2666, 3666, ... 순서. N번째 영화 제목 => N번째로 작은 종말의 수
+# N입력받음 => N번째 영화의 제목 출력
+# 결국 666을 최소한으로 포함해야 하므로 666은 기본으로 1000자리에서 부터 연산을 시작한 후 더해주면 정답 출력
+# 숫자가 커져감에 따라 6660과 같은 수가 나오게 되는 경우가 발생한다 => 666을 하나의 문자로 묶어서 생각해 볼까? => 대소를 비교하기 어렵다
+# 브투르 포스인 이유를 생각해보자 => 666으로 시작해서 5666이 되는 순간, 6660~6669까지는 다른 방식, 다시 7666~15666, 16660~16669, 17666~25666, ...
+# 그렇게 진행하다 66600~66699까지는 100개가 가능하다. => 자릿수에 영향을 많이 받는데? => 리스트로 6을 찾아 나가자
+N = int(input())
+# check = 0
+# result = 666
+# while N != check:
+#     result += 1
+#     if str(result) in "666":
+#         check += 1
+# print(result)
+# 이런식으로 가게 된다면 엄청 높은 시간 복잡도를 가질 것이다. => O(n^자릿수+1)
+result = 666
+while N != 0:
+    result += 1
+    N -= 1
+if str(result) in "666":
+    print("sibal")
+else:
+    print("jockatnae")
