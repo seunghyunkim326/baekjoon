@@ -4,14 +4,14 @@ import sys
 input = sys.stdin.readline
 output = sys.stdout.write
 N = int(input())
-company = []
+company = set()
 for _ in range(N):
     name, state = map(str,input().split())
     if state == "enter":
-        company.append(name)
+        company.add(name)
     elif state == "leave":
-        company.remove(name)
-company.sort(reverse=True)
-for i in range(len(company)):
-    output(company[i] + "\n")
-# 시간초과 발생 => sys를 이용해보자!
+        company.discard(name)
+result = sorted(company, reverse=True)
+for i in result:
+    output(i + "\n")
+# 시간초과 발생 => sys를 이용해보자! => 그래도 발생! => 챗GPT왈 : 리스트 대신 set을 사용해라 => 성공
