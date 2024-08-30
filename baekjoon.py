@@ -1,17 +1,19 @@
-# 회사에 있는 사람 : 회사에 있는 모든 사람을 구하는 프로그램
-# 출입 기록의 수 N(2<=N<10^6), 각 사람의 이름과 enter 나 leave 입력받음 => 현재 회사에 있는 사람의 이름을 사전의 역순으로 한 줄씩
-import sys
-input = sys.stdin.readline
-output = sys.stdout.write
-N = int(input())
-company = set()
-for _ in range(N):
-    name, state = map(str,input().split())
-    if state == "enter":
-        company.add(name)
-    elif state == "leave":
-        company.discard(name)
-result = sorted(company, reverse=True)
-for i in result:
-    output(i + "\n")
-# 시간초과 발생 => sys를 이용해보자! => 그래도 발생! => 챗GPT왈 : 리스트 대신 set을 사용해라 => 성공
+# 나는야 포켓몬 마스터 이다솜 : 도감에 수록된 포켓몬 개수 N, 맞춰야 하는 문제 M(1<=M<=100000)개
+# N개의 포켓몬 입력, M개의 문제(포켓몬 이름 or 도감에서의 번호)
+# M개의 문제에 대한 답을 출력 => 이름이면 도감 번호, 도감 번호면 이름
+N, M = map(int, input().split())
+arr = []
+for i in range(N):
+    name = input()
+    arr.append(name)
+for _ in range(M):
+    problem = input()
+    try:
+        problem = int(problem)
+    except:
+        problem = str(problem)
+    if type(problem) == int:
+        print(arr[problem])
+    elif type(problem) == str:
+        print(arr.index(problem)+1)
+# 숫자를 입력해도 문자로 입력받기 때문에 type error 발생 => ASCII 코드를 이용해서 숫자 부분을 추출할까? => 숫자인지만 판별하려면 isdigit() or try 구문 사용하자!
