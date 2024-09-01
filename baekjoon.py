@@ -1,13 +1,10 @@
-# 수 정렬하기 2 : N과 N개의 정수 입력 => 오름차순으로 출력
-import sys
-input = sys.stdin.readline
-output = sys.stdout.write
+# 수 정렬하기3 : N, N개의 수 N+1줄에 걸쳐 입력 => N개의 줄에 오름차순 출력(중복O)
+# 중복 가능하기 때문에 집합은 불가능 => 리스트로 한 번 해보자
+arr = []
 N = int(input())
-arr = set()
 for _ in range(N):
     temp = int(input())
-    arr.add(temp)
+    arr.append(temp)
 result = sorted(arr)
-for i in result:
-    output(str(i) + "\n")
-# GPT가 알려준 방법처럼 for a in b 를 사용하여 집합도 간편하게 한 원소 씩 출력 가능하다.(집합의 정렬로 sort로 가능하다.)
+for i in range(N):
+    print(result[i])
